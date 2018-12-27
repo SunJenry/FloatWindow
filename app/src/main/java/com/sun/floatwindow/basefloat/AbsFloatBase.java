@@ -87,7 +87,7 @@ public abstract class AbsFloatBase {
             mWindowManager.addView(mInflate, mLayoutParams);
             mAdded = true;
         } catch (Exception e) {
-            Log.e(TAG, "添加悬浮窗失败！！！！！！");
+            Log.e(TAG, "添加悬浮窗失败！！！！！！请检查悬浮窗权限");
         }
     }
 
