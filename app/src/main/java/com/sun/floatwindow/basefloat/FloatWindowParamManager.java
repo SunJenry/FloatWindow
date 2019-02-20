@@ -340,6 +340,10 @@ public class FloatWindowParamManager {
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             layoutParams.type = TYPE_APPLICATION_OVERLAY;
+            //刘海屏延伸到刘海里面
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                layoutParams.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
                 && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             layoutParams.type = TYPE_TOAST;

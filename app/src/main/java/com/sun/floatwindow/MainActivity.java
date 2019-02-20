@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sun.floatwindow.basefloat.FloatWindowParamManager;
+import com.sun.floatwindow.basefloat.RomUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean permission = FloatWindowParamManager.checkPermission(getApplicationContext());
-                if (permission) {
+                if (permission&&!RomUtils.isVivoRom()) {
                     Toast.makeText(MainActivity.this, R.string.has_float_permission, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), FloatWindowService.class);
                     intent.setAction(FloatWindowService.ACTION_CHECK_PERMISSION_AND_TRY_ADD);
