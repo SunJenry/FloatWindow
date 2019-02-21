@@ -24,4 +24,9 @@ public class NotFullScreenTouchDisableFloatWindow extends AbsFloatBase {
 
         inflate(R.layout.main_layout_float_not_full_screen_touch_disable);
     }
+
+    @Override
+    protected void onAddWindowFailed(Exception e) {
+
+    }
 }

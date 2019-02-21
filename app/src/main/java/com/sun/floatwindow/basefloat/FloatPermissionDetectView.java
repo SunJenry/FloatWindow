@@ -32,4 +32,9 @@ public class FloatPermissionDetectView extends AbsFloatBase {
             }
         });
     }
+
+    @Override
+    protected void onAddWindowFailed(Exception e) {
+
+    }
 }

@@ -30,4 +30,9 @@ public class InputWindow extends AbsFloatBase {
             }
         });
     }
+
+    @Override
+    protected void onAddWindowFailed(Exception e) {
+
+    }
 }

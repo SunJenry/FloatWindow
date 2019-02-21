@@ -31,4 +31,9 @@ public class FullScreenTouchAbleFloatWindow extends AbsFloatBase {
             }
         });
     }
+
+    @Override
+    protected void onAddWindowFailed(Exception e) {
+
+    }
 }

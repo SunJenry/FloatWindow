@@ -23,4 +23,9 @@ public class FullScreenTouchDisableFloatWindow extends AbsFloatBase {
 
 
     }
+
+    @Override
+    protected void onAddWindowFailed(Exception e) {
+
+    }
 }

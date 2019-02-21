@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -89,7 +88,8 @@ public abstract class AbsFloatBase {
             mAdded = true;
         } catch (Exception e) {
             Log.e(TAG, "添加悬浮窗失败！！！！！！请检查悬浮窗权限");
-            Toast.makeText(mContext, "添加悬浮窗失败！！！！！！请检查悬浮窗权限", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "添加悬浮窗失败！！！！！！请检查悬浮窗权限", Toast.LENGTH_SHORT).show();
+            onAddWindowFailed(e);
         }
     }
 
@@ -126,6 +126,8 @@ public abstract class AbsFloatBase {
         mInflate = View.inflate(mContext, layout, null);
         return mInflate;
     }
+
+    protected abstract void onAddWindowFailed(Exception e);
 
     @SuppressWarnings("unchecked")
     protected <T extends View> T findView(@IdRes int id) {
