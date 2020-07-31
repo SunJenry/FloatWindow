@@ -18,6 +18,7 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.google.common.base.Strings;
+import com.sun.floatwindow.basefloat.AnimRevealFloatView;
 import com.sun.floatwindow.basefloat.FloatPermissionDetectView;
 import com.sun.floatwindow.basefloat.FloatWindowParamManager;
 import com.sun.floatwindow.basefloat.FullScreenTouchAbleFloatWindow;
@@ -40,6 +41,7 @@ public class FloatWindowService extends Service {
     public static final String ACTION_NOT_FULL_SCREEN_TOUCH_ABLE = "action_not_full_screen_touch_able";
     public static final String ACTION_NOT_FULL_SCREEN_TOUCH_DISABLE = "action_not_full_screen_touch_disable";
     public static final String ACTION_INPUT = "action_input";
+    public static final String ACTION_ANIM = "action_anim";
     public static final String ACTION_KILL = "action_kill";
 
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
@@ -72,6 +74,7 @@ public class FloatWindowService extends Service {
     private FullScreenTouchDisableFloatWindow mFullScreenTouchDisableFloatWindow;
     private NotFullScreenTouchDisableFloatWindow mNotFullScreenTouchDisableFloatWindow;
     private InputWindow mInputWindow;
+    private AnimRevealFloatView animRevealFloatView;
 
     public FloatWindowService() {
     }
@@ -117,11 +120,21 @@ public class FloatWindowService extends Service {
             case ACTION_INPUT:
                 showInputWindow();
                 break;
+
+            case ACTION_ANIM:
+                showAnimWindow();
+                break;
             case ACTION_KILL:
                 stopSelf();
                 break;
         }
         return START_STICKY;
+    }
+
+    private void showAnimWindow() {
+        dismissAnimRevealFloatView();
+        animRevealFloatView = new AnimRevealFloatView(FloatWindowService.this);
+        animRevealFloatView.show();
     }
 
     @Override
@@ -151,7 +164,16 @@ public class FloatWindowService extends Service {
             mInputWindow = null;
         }
 
+        dismissAnimRevealFloatView();
+
         super.onDestroy();
+    }
+
+    private void dismissAnimRevealFloatView() {
+        if (animRevealFloatView != null) {
+            animRevealFloatView.remove();
+            animRevealFloatView = null;
+        }
     }
 
     private synchronized void showFloatPermissionWindow() {

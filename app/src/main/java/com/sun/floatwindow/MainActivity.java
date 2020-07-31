@@ -1,14 +1,18 @@
 package com.sun.floatwindow;
 
+import android.animation.ValueAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.SizeUtils;
 import com.sun.floatwindow.basefloat.FloatWindowParamManager;
 import com.sun.floatwindow.basefloat.RomUtils;
 
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean permission = FloatWindowParamManager.checkPermission(getApplicationContext());
-                if (permission&&!RomUtils.isVivoRom()) {
+                if (permission && !RomUtils.isVivoRom()) {
                     Toast.makeText(MainActivity.this, R.string.has_float_permission, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), FloatWindowService.class);
                     intent.setAction(FloatWindowService.ACTION_CHECK_PERMISSION_AND_TRY_ADD);
@@ -91,6 +95,17 @@ public class MainActivity extends AppCompatActivity {
                 startService(intent);
             }
         });
+
+        findViewById(R.id.btn_anim).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FloatWindowService.class);
+                intent.setAction(FloatWindowService.ACTION_ANIM);
+                startService(intent);
+            }
+        });
+
+
     }
 
     private void showOpenPermissionDialog() {

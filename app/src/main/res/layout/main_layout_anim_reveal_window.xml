@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlRoot"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+
+        <LinearLayout
+            android:id="@+id/lLRoot"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_corner"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/bg_float_permission_detect" />
+
+            <TextView
+                android:id="@+id/tVContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="asjdfalsdjfla" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
