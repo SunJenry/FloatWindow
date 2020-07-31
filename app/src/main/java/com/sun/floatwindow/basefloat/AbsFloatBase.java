@@ -37,6 +37,8 @@ public abstract class AbsFloatBase {
     int mGravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
     int mViewMode = WRAP_CONTENT_NOT_TOUCHABLE;
     Handler mHandler = new Handler(Looper.getMainLooper());
+    protected int mAddX = 0;
+    protected int mAddY = 0;
 
     public AbsFloatBase(Context context) {
         mContext = context;
@@ -84,6 +86,8 @@ public abstract class AbsFloatBase {
         mInflate.setVisibility(View.VISIBLE);
 
         try {
+            mLayoutParams.x = mAddX;
+            mLayoutParams.y = mAddY;
             mWindowManager.addView(mInflate, mLayoutParams);
             mAdded = true;
         } catch (Exception e) {

@@ -6,6 +6,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.sun.floatwindow.R;
 
 /**
@@ -17,6 +19,11 @@ public class FollowTouchView extends AbsFloatBase {
         super(context);
 
         mViewMode = WRAP_CONTENT_TOUCHABLE;
+
+        mGravity = Gravity.START | Gravity.TOP;
+
+        mAddX = SizeUtils.dp2px(100);
+        mAddY = SizeUtils.dp2px(100);
 
         inflate(R.layout.main_layout_follow_touch);
 
