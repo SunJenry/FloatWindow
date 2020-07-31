@@ -105,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_touch_follow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FloatWindowService.class);
+                intent.setAction(FloatWindowService.ACTION_FOLLOW_TOUCH);
+                startService(intent);
+            }
+        });
+
 
     }
 

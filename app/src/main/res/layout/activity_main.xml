@@ -109,10 +109,19 @@
             android:id="@+id/btn_anim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/float_fluent_anim"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/float_fluent_anim"
             app:layout_constraintTop_toBottomOf="@+id/btn_input" />
+
+        <Button
+            android:id="@+id/btn_touch_follow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="跟随手势滑动"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_anim" />
 
     </android.support.constraint.ConstraintLayout>
 
