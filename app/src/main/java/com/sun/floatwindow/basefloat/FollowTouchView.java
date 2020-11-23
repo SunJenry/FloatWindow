@@ -1,10 +1,12 @@
 package com.sun.floatwindow.basefloat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.SizeUtils;
@@ -14,6 +16,8 @@ import com.sun.floatwindow.R;
  * Create by sun on 2020/7/31 5:16 PM
  */
 public class FollowTouchView extends AbsFloatBase {
+
+    private final int mScaledTouchSlop;
 
     public FollowTouchView(Context context) {
         super(context);
@@ -26,6 +30,8 @@ public class FollowTouchView extends AbsFloatBase {
         mAddY = SizeUtils.dp2px(100);
 
         inflate(R.layout.main_layout_follow_touch);
+
+        mScaledTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
         mInflate.setOnTouchListener(new View.OnTouchListener() {
 
@@ -61,12 +67,25 @@ public class FollowTouchView extends AbsFloatBase {
                         mLastY = y;
                         break;
                     case MotionEvent.ACTION_UP:
+                        float disX = x - mDownX;
+                        float disY = y - mDownY;
+                        double sqrt = Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2));
+                        if (sqrt < mScaledTouchSlop) {
+                            jumpHome();
+                        }
                         break;
                 }
 
                 return false;
             }
         });
+    }
+
+    private void jumpHome() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        mContext.startActivity(intent);
     }
 
 

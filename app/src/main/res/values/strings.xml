@@ -12,4 +12,5 @@
     <string name="not_full_screen_touch_disable">非全屏不拦截触摸事件</string>
     <string name="request_focus_interact_with_input">占用焦点，可以和输入法交互</string>
     <string name="float_fluent_anim">悬浮窗size变化流畅动画</string>
+    <string name="back_home">回到桌面</string>
 </resources>
